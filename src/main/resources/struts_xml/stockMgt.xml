@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+ 
+<struts>
+
+    <package name="stockMgt" namespace="/stockMgt" extends="securityTest-default">               
+
+     <action name="loadAllInventory" class="inventoryAction" method="loadAll">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>    
+    </action>
+
+     <action name="loadInventoryByStore" class="inventoryAction" method="loadByStore">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>    
+    </action> 
+
+     <action name="delEmptyInventory" class="inventoryAction" method="delete">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>    
+    </action> 
+    
+     <action name="loadProdInstockVchByStoreAndCreatedDateRange" class="prodStockInVchAction" method="loadListByCreatedDateRange">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>              
+    </action>     
+
+     <action name="loadProdInstockVchDetailByStoreAndCreatedDateRange" class="prodStockInVchAction" method="loadDetailListByCreatedDateRange">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>    
+    </action>     
+
+     <action name="loadMyStockInVch" class="prodStockInVchAction" method="loadMyVchList">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>    
+    </action>     
+
+     <action name="loadProdInstockVch" class="prodStockInVchAction" method="loadEntity">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result> 
+    </action>  
+
+     <action name="saveProdInstockVch" class="prodStockInVchAction" method="save">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>         
+           
+    </action>
+ 
+      <action name="updateStateForProdInstockVch" class="prodStockInVchAction" method="updateState">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+    </action>  
+    
+     <action name="deleteProdInstockVch" class="prodStockInVchAction" method="delete">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+     </action>    
+
+     <action name="loadProdOutstockVchByStoreAndCreatedDateRange" class="prodStockOutVchAction" method="loadListByCreatedDateRange">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>         
+    </action>     
+
+     <action name="loadProdOutstockVchDetailByStoreAndCreatedDateRange" class="prodStockOutVchAction" method="loadDetailListByCreatedDateRange">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>    
+    </action>     
+
+     <action name="loadMyStockOutVch" class="prodStockOutVchAction" method="loadMyVchList">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>    
+    </action>     
+
+     <action name="loadProdOutstockVch" class="prodStockOutVchAction" method="loadEntity">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>          
+    </action>  
+
+     <action name="saveProdOutstockVch" class="prodStockOutVchAction" method="save">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>                  
+    </action>
+ 
+      <action name="updateStateForProdOutstockVch" class="prodStockOutVchAction" method="updateState">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+    </action>  
+
+     <action name="deleteProdOutstockVch" class="prodStockOutVchAction" method="delete">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+     </action>  
+
+     <action name="loadStockTakenVch" class="stockTakenVchAction" method="loadEntity">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result> 
+          
+    </action>  
+
+     <action name="saveStockTakenVch" class="stockTakenVchAction" method="save">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>             
+    </action>
+ 
+      <action name="updateStateForStockTakenVch" class="stockTakenVchAction" method="updateState">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+    </action>  
+    
+     <action name="deleteStockTakenVch" class="stockTakenVchAction" method="delete">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+     </action>    
+
+     <action name="loadStockTakenVchByStoreAndCreatedDateRange" class="stockTakenVchAction" method="loadListByCreatedDateRange">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>    
+    </action>  
+
+     <action name="loadMyStockTakenVch" class="stockTakenVchAction" method="loadMyVchList">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>    
+    </action>     
+
+     <action name="loadMyStockTsfVch" class="stockTsfVchAction" method="loadMyVchList">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>    
+    </action>   
+
+     <action name="loadStockTsfVch" class="stockTsfVchAction" method="loadEntity">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result> 
+          
+    </action>  
+
+     <action name="saveStockTsfVch" class="stockTsfVchAction" method="save">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>               
+    </action>
+ 
+      <action name="updateStateForStockTsfVch" class="stockTsfVchAction" method="updateState">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+    </action>  
+    
+     <action name="delStockTsfVch" class="stockTsfVchAction" method="delete">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+     </action>    
+
+     <action name="loadStockTsfVchBySrcStoreAndCreatedDateRange" class="stockTsfVchAction" method="loadListByCreatedDateRange">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>               
+    </action> 
+
+     <action name="loadReportMenu" class="stockMgtReportAction" method="loadReportMenu">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>                       
+    </action>  
+
+     <action name="loadStockReportSingleMonth" class="stockMgtReportAction" method="loadStockReportSingleMonth">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>       
+    </action>  
+ 
+    <action name="loadStockReportMultiMonth" class="stockMgtReportAction" method="loadStockReportMultiMonth">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>    
+        <interceptor-ref name="defaultStack">  
+
+          <param name="exception.logEnabled">true</param>  
+        
+          <param name="exception.logLevel">error</param>  
+        
+        </interceptor-ref>                     
+    </action>  
+    
+     <action name="loadProdStockRtVchByStoreAndCreatedDateRange" class="prodStockReturnVchAction" method="loadListByCreatedDateRange">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>              
+    </action>     
+
+     <action name="loadProdStockRtVchDetailByStoreAndCreatedDateRange" class="prodStockReturnVchAction" method="loadDetailListByCreatedDateRange">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>    
+    </action>     
+
+     <action name="loadMyStockRtVch" class="prodStockReturnVchAction" method="loadMyVchList">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>    
+    </action>     
+
+     <action name="loadProdStockRtVch" class="prodStockReturnVchAction" method="loadEntity">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result> 
+    </action>  
+
+     <action name="saveProdStockRtVch" class="prodStockReturnVchAction" method="save">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>         
+           
+    </action>
+ 
+      <action name="updateStateForProdStockRtVch" class="prodStockReturnVchAction" method="updateState">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+    </action>  
+    
+     <action name="deleteProdStockRtVch" class="prodStockReturnVchAction" method="delete">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+     </action>     
+    
+     <action name="loadMyProdInstockByCreatedDateRange" class="prodStockInVchAction" method="loadMyListByCreatedDateRange">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>              
+    </action> 
+
+     <action name="loadMyProdOutstockByCreatedDateRange" class="prodStockOutVchAction" method="loadMyListByCreatedDateRange">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>              
+    </action>   
+    
+    <action name="loadMyProdStockRtByCreatedDateRange" class="prodStockReturnVchAction" method="loadMyListByCreatedDateRange">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>              
+    </action>     
+                
+    </package>    
+    
+</struts>

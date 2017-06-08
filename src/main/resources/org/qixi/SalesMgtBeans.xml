@@ -1,0 +1,101 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">    
+    
+    <bean id="paymentModeDao" class="org.qixi.salesMgt.dao.hibernate.PaymentModeDaoImpl" >     
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+ 
+     <bean id="paymentModeService" class="org.qixi.salesMgt.service.PaymentModeService">  
+        <property name="dao" ref="paymentModeDao" ></property>       
+     </bean>  
+
+    <bean id="paymentModeAction" class="org.qixi.salesMgt.action.PaymentModeAction" scope="prototype">
+        <property name="service" ref="paymentModeService" ></property>
+    </bean>
+
+    <bean id="freightCmpDao" class="org.qixi.salesMgt.dao.hibernate.FreightCmpDaoImpl" >     
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+ 
+     <bean id="freightCmpService" class="org.qixi.salesMgt.service.FreightCmpService">  
+        <property name="dao" ref="freightCmpDao" ></property>        
+     </bean>  
+
+    <bean id="freightCmpAction" class="org.qixi.salesMgt.action.FreightCmpAction" scope="prototype">
+        <property name="service" ref="freightCmpService" ></property>
+    </bean>
+
+    <bean id="shippingCmpDao" class="org.qixi.salesMgt.dao.hibernate.ShippingCmpDaoImpl" >     
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+ 
+     <bean id="shippingCmpService" class="org.qixi.salesMgt.service.ShippingCmpService">  
+        <property name="dao" ref="shippingCmpDao" ></property>     
+     </bean>  
+
+    <bean id="shippingCmpAction" class="org.qixi.salesMgt.action.ShippingCmpAction" scope="prototype">
+        <property name="service" ref="shippingCmpService" ></property>
+    </bean>
+ 
+     <bean id="orderReportService" class="org.qixi.salesMgt.service.impl.OrderSaleReportServiceImpl"> 
+         <property name="orderDao" ref="orderSaleVchDao" ></property>
+     </bean>  
+
+     <bean id="stockSaleReportService" class="org.qixi.salesMgt.service.impl.StockSaleReportServiceImpl">     
+        <property name="orderDao" ref="stockSaleVchDao" ></property>
+     </bean>  
+
+    <bean id="orderSaleReportAction" class="org.qixi.salesMgt.action.OrderSaleReportAction" scope="prototype">
+        <property name="service" ref="orderReportService" ></property>
+    </bean>   
+    
+    <bean id="stockSaleReportAction" class="org.qixi.salesMgt.action.StockSaleReportAction" scope="prototype">
+        <property name="service" ref="stockSaleReportService" ></property>
+    </bean>          
+ 
+     <bean id="saleVchDao" class="org.qixi.salesMgt.dao.hibernate.SaleVchDaoImpl" >     
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+
+     <bean id="saleVchService" class="org.qixi.salesMgt.service.impl.SaleVchServiceImpl">  
+        <property name="dao" ref="saleVchDao"></property>
+     </bean>  
+
+    <bean id="saleVchAction" class="org.qixi.salesMgt.action.SaleVchAction" scope="prototype">
+        <property name="service" ref="saleVchService" ></property>
+    </bean>
+
+     
+    <bean id="orderSaleVchDao" class="org.qixi.salesMgt.dao.hibernate.OrderSaleVchDaoImpl" >     
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+ 
+     <bean id="orderSaleVchService" class="org.qixi.salesMgt.service.impl.OrderSaleVchServiceImpl">  
+        <property name="dao" ref="orderSaleVchDao"></property>
+     </bean>  
+
+    <bean id="orderSaleVchAction" class="org.qixi.salesMgt.action.OrderSaleVchAction" scope="prototype">
+        <property name="service" ref="orderSaleVchService" ></property>
+    </bean>
+
+    <bean id="stockSaleVchDao" class="org.qixi.salesMgt.dao.hibernate.StockSaleVchDaoImpl" >     
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+ 
+     <bean id="stockSaleVchService" class="org.qixi.salesMgt.service.impl.StockSaleVchServiceImpl">  
+        <property name="dao" ref="stockSaleVchDao"></property>
+     </bean>  
+
+    <bean id="stockSaleVchAction" class="org.qixi.salesMgt.action.StockSaleVchAction" scope="prototype">
+        <property name="service" ref="stockSaleVchService" ></property>
+    </bean>  
+      
+</beans>

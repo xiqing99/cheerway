@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+ 
+<struts>
+
+    <package name="manuMgt" namespace="/manuMgt" extends="securityTest-default">              
+    
+     <action name="updateProdMtItem" class="prodMtItemAction" method="update">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+    </action> 
+    
+     <action name="loadProdMtItem" class="prodMtItemAction" method="loadEntity">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+    </action>     
+
+     <action name="loadAllProdMtItem" class="prodMtItemAction" method="loadAll">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>       
+    </action>       
+ 
+      <action name="loadAllDisabledProdMtItem" class="prodMtItemAction" method="loadDisabledList">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>       
+    </action>  
+    
+     <action name="loadProdMtItemByCtg" class="prodMtItemAction" method="loadByCtgId">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>       
+    </action>       
+ 
+      <action name="loadAllSlbProdMtItem" class="slbProdMtItemAction" method="loadAll">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>       
+    </action> 
+ 
+     <action name="loadSlbProdMtItemByCtg" class="slbProdMtItemAction" method="loadByCtgId">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>       
+    </action> 
+    
+      <action name="loadUnsaleableProdMtItem" class="slbProdMtItemAction" method="loadUnsaleableList">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>       
+    </action>     
+    
+      <action name="updSaleableInfo" class="slbProdMtItemAction" method="updSaleableInfo">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+    </action>    
+              
+    </package>    
+    
+</struts>

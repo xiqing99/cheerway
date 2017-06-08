@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+ 
+<struts>
+
+    <package name="accountMgt" namespace="/accountMgt" extends="securityTest-default">           
+    
+     <action name="saveDepositVoucher" class="depositVchAction" method="save">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+    </action>                  
+
+     <action name="delDepositVoucher" class="depositVchAction" method="delete">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+    </action>   
+
+     <action name="updateDepositVoucherState" class="depositVchAction" method="updateState">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>    
+    </action>   
+
+     <action name="loadDepositVoucherDetailListByCreatedDateRange" class="depositVchAction" method="loadDetailListByCreatedDateRange">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>            
+    </action>
+
+     <action name="loadDepositVoucherListByCreatedDateRange" class="depositVchAction" method="loadListByCreatedDateRange">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>           
+    </action>
+
+     <action name="loadSalesVchByCust" class="depositVchAction" method="loadSalesVchByCust">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>           
+    </action>
+
+     <action name="loadDepositVoucher" class="depositVchAction" method="loadEntity">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>            
+     </action>  
+
+     <action name="loadDepositAmountBySaleVch" class="depositVchAction" method="loadDepositBySaleVch">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>            
+     </action>  
+
+     <action name="loadDepositAmountByCust" class="depositVchAction" method="loadDepositByCust">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>            
+     </action>  
+
+     <action name="loadDepositAmountPerOrderList" class="depositVchAction" method="loadDepositAmountPerSaleVchList">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>           
+    </action>      
+
+     <action name="loadDepositAmountPerCustList" class="depositVchAction" method="loadDepositAmountPerCustList">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>           
+    </action>  
+
+     <action name="loadMyDepositVch" class="depositVchAction" method="loadMyVchList">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>    
+    </action>   
+
+     <action name="saveReceiptVoucher" class="receiptVchAction" method="save">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+     </action>  
+
+     <action name="delReceiptVoucher" class="receiptVchAction" method="delete">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+    </action>   
+
+     <action name="updateReceiptVoucherState" class="receiptVchAction" method="updateState">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>        
+    </action>   
+
+     <action name="loadReceiptVoucherDetailListByCreatedDateRange" class="receiptVchAction" method="loadDetailListByCreatedDateRange">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>    
+    </action>
+
+     <action name="loadReceiptVoucherListByCreatedDateRange" class="receiptVchAction" method="loadListByCreatedDateRange">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>     
+    </action>
+
+     <action name="loadReceiptVoucher" class="receiptVchAction" method="loadEntity">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>                     
+     </action>
+
+     <action name="initReceiptVchByRsvbId" class="receiptVchAction" method="initByRsvb">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>                     
+     </action>
+
+     <action name="loadMyReceiptVch" class="receiptVchAction" method="loadMyVchList">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>    
+    </action>   
+ 
+    <action name="saveRsvbPerOSVoucher" class="rsvbPerProdSOVchAction" method="save">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+    </action>                   
+
+     <action name="loadRsvbPerOSVoucherList" class="rsvbPerProdSOVchAction" method="loadAll">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>          
+    </action>
+
+     <action name="loadRsvbListByCreatedDateRange" class="rsvbPerProdSOVchAction" method="loadListByCreatedDateRange">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>          
+    </action>
+
+     <action name="loadMyRsvbListByCreatedDateRange" class="rsvbPerProdSOVchAction" method="loadMyListByCreatedDateRange">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>          
+    </action>
+
+     <action name="loadRsvbListBySaleVch" class="rsvbPerProdSOVchAction" method="loadListBySaleVch">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>    
+    </action>
+
+     <action name="loadRsvbPerOSVoucher" class="rsvbPerProdSOVchAction" method="loadEntity">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>            
+     </action>  
+
+      <action name="loadOverduePerRSVB" class="rsvbPerProdSOVchAction" method="loadOverdueList">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>               
+     </action>  
+
+     <action name="loadMyRsvbPerProdSOVch" class="rsvbPerProdSOVchAction" method="loadMyVchList">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>    
+    </action>   
+
+      <action name="loadReportMenu" class="accountMgtReportAction" method="loadReportMenu">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>                     
+     </action>
+ 
+      <action name="loadSaleReportByMarketArea" class="accountMgtReportAction" method="loadSaleReportByMarketArea">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>         
+             
+     </action>  
+
+      <action name="loadOverduePerCust" class="accountMgtReportAction" method="loadOverdueReport">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>               
+     </action>   
+
+      <action name="loadSaleReportPerProd" class="accountMgtReportAction" method="loadSaleReportPerProd">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>         
+             
+     </action>  
+
+     <action name="saveRefundmentVch" class="refundmentVchAction" method="save">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+     </action>  
+
+     <action name="delRefundmentVch" class="refundmentVchAction" method="delete">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+    </action>   
+
+     <action name="updateRefundmentVchState" class="refundmentVchAction" method="updateState">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>        
+    </action>   
+
+     <action name="loadRefundmentVchDetailListByCreatedDateRange" class="refundmentVchAction" method="loadDetailListByCreatedDateRange">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>    
+    </action>
+
+     <action name="loadRefundmentVchListByCreatedDateRange" class="refundmentVchAction" method="loadListByCreatedDateRange">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>     
+    </action>
+
+     <action name="loadMyRefundmentVchListByCreatedDateRange" class="refundmentVchAction" method="loadMyListByCreatedDateRange">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>     
+    </action>
+
+     <action name="loadRefundmentVch" class="refundmentVchAction" method="loadEntity">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>                     
+     </action>
+
+     <action name="loadMyRefundmentVch" class="refundmentVchAction" method="loadMyVchList">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>    
+     </action>  
+
+     <action name="loadRfdPerStockRt" class="refundPerStockRtAction" method="loadEntity">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>            
+     </action>  
+
+    <action name="saveRfdPerStockRt" class="refundPerStockRtAction" method="save">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+    </action>   
+
+     <action name="loadRefundPerStRtListBySaleVch" class="refundPerStockRtAction" method="loadListBySaleVch">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>    
+    </action>    
+    
+    <action name="loadRefundPerStRtListByCreatedDateRange" class="refundPerStockRtAction" method="loadListByCreatedDateRange">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>          
+    </action>    
+
+    <action name="loadMyRefundPerStRtListByCreatedDateRange" class="refundPerStockRtAction" method="loadMyListByCreatedDateRange">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>          
+    </action>  
+
+     <action name="loadMyRefundPerStRt" class="refundPerStockRtAction" method="loadMyVchList">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>    
+     </action>  
+              
+    </package>    
+    
+</struts>

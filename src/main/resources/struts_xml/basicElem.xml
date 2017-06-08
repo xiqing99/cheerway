@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+ 
+<struts>
+
+    <package name="basicElem" namespace="/basicElem" extends="securityTest-default">           
+    
+    <action name="loadDeptListForCombo" class="deptAction" method="loadListForCombo">
+        <result name="success" type="json">
+            <param name="target">comboList</param>
+        </result>
+    </action>      
+    
+     <action name="delDept" class="deptAction" method="delete">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+    </action>  
+    
+     <action name="saveDept" class="deptAction" method="save">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+    </action> 
+    
+     <action name="loadDept" class="deptAction" method="loadEntity">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+    </action>     
+    
+     <action name="loadDeptTree" class="deptAction" method="loadAll">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>
+    </action>      
+
+     <action name="loadDeptSubTree" class="deptAction" method="loadSubTree">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>       
+    </action>   
+
+     <action name="loadDeptSubComboList" class="deptAction" method="loadSubComboList">
+        <result name="success" type="json">
+            <param name="target">comboList</param>
+        </result>
+        <interceptor-ref name="defaultStack">  
+          <param name="exception.logEnabled">true</param>          
+          <param name="exception.logLevel">error</param>          
+        </interceptor-ref>         
+    </action>   
+            
+     <action name="savePosition" class="positionAction" method="save">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+    </action>                  
+
+     <action name="delPosition" class="positionAction" method="delete">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+    </action>   
+
+     <action name="loadPosListForCombo" class="positionAction" method="loadListForCombo">
+        <result name="success" type="json">
+            <param name="target">comboList</param>
+        </result>
+    </action>
+
+     <action name="loadAllPosition" class="positionAction" method="loadAll">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>
+        
+    </action>
+     
+     <action name="saveProduct" class="productAction" method="save">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+     </action>       
+
+     <action name="loadAllProduct" class="productAction" method="loadAll">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>            
+     </action>     
+
+     <action name="loadDisabledProduct" class="productAction" method="loadDisabledList">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>           
+     </action> 
+
+     <action name="loadProductByCtg" class="productAction" method="loadByCtg">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>    
+     </action>    
+
+     <action name="loadProduct" class="productAction" method="loadEntity">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>               
+     </action>     
+ 
+      <action name="delProduct" class="productAction" method="delete">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>        
+     </action> 
+ 
+      <action name="loadStoreTree" class="storeAction" method="loadAll">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>              
+      </action> 
+
+      <action name="loadStoreListForCombo" class="storeAction" method="loadListForCombo">
+        <result name="success" type="json">
+            <param name="target">comboList</param>
+        </result>        
+      </action> 
+
+      <action name="loadStore" class="storeAction" method="loadEntity">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>     
+        <interceptor-ref name="defaultStack">  
+
+          <param name="exception.logEnabled">true</param>  
+        
+          <param name="exception.logLevel">error</param>  
+        
+        </interceptor-ref>   
+      </action>
+
+      <action name="saveStore" class="storeAction" method="save">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>        
+      </action> 
+
+      <action name="delStore" class="storeAction" method="delete">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>        
+      </action> 
+
+      <action name="loadProdCtgTree" class="prodCtgAction" method="loadAll">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>              
+      </action> 
+
+      <action name="loadProdCtgForCombo" class="prodCtgAction" method="loadListForCombo">
+        <result name="success" type="json">
+            <param name="target">comboList</param>
+        </result>        
+      </action> 
+
+      <action name="loadProdCtg" class="prodCtgAction" method="loadEntity">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>        
+      </action>
+
+      <action name="saveProdCtg" class="prodCtgAction" method="save">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>        
+      </action> 
+
+      <action name="delProdCtg" class="prodCtgAction" method="delete">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>        
+      </action> 
+
+     <action name="loadAllProdType" class="prodTypeAction" method="loadAll">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>
+     </action>
+
+     <action name="loadProdTypeForCombo" class="prodTypeAction" method="loadListForCombo">
+        <result name="success" type="json">
+            <param name="target">comboList</param>
+        </result>
+     </action>
+ 
+       <action name="loadProdType" class="prodTypeAction" method="loadEntity">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>        
+      </action>
+
+      <action name="saveProdType" class="prodTypeAction" method="save">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>        
+      </action> 
+
+      <action name="delProdType" class="prodTypeAction" method="delete">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>        
+      </action> 
+
+
+     <action name="loadAllProdUnit" class="prodUnitAction" method="loadAll">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>
+     </action>
+
+     <action name="loadProdUnitForCombo" class="prodUnitAction" method="loadListForCombo">
+        <result name="success" type="json">
+            <param name="target">comboList</param>
+        </result>
+     </action>
+ 
+       <action name="loadProdUnit" class="prodUnitAction" method="loadEntity">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>        
+      </action>
+
+      <action name="saveProdUnit" class="prodUnitAction" method="save">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>        
+      </action> 
+
+      <action name="delProdUnit" class="prodUnitAction" method="delete">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>        
+      </action> 
+ 
+      <action name="loadAllEmpGenInfo" class="empGenInfoAction" method="loadAll">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>
+     </action>
+
+      <action name="loadDisabledEmpGenInfo" class="empGenInfoAction" method="loadDisabledList">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>
+     </action>
+
+     <action name="loadEmpGenInfoByDept" class="empGenInfoAction" method="loadByDept">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>         
+     </action>
+
+     <action name="loadEmpGIByDeptForCombo" class="empGenInfoAction" method="loadByDeptForCombo">
+        <result name="success" type="json">
+            <param name="target">comboList</param>
+        </result>         
+     </action>
+
+     <action name="loadEmpGeneInfoForCombo" class="empGenInfoAction" method="loadListForCombo">
+        <result name="success" type="json">
+            <param name="target">comboList</param>
+        </result>         
+     </action>
+ 
+       <action name="loadEmpGenInfo" class="empGenInfoAction" method="loadEntity">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result> 
+              
+      </action>
+
+      <action name="saveEmpGenInfo" class="empGenInfoAction" method="save">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>        
+      </action> 
+
+      <action name="delEmpGenInfo" class="empGenInfoAction" method="delete">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>        
+      </action> 
+      
+      <action name="saveCustomer" class="customerAction" method="save">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+        <interceptor-ref name="defaultStack">  
+
+          <param name="exception.logEnabled">true</param>  
+        
+          <param name="exception.logLevel">error</param>  
+        
+        </interceptor-ref>              
+     </action>       
+
+     <action name="loadAllCustomer" class="customerAction" method="loadAll">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>    
+        <interceptor-ref name="defaultStack">  
+
+          <param name="exception.logEnabled">true</param>  
+        
+          <param name="exception.logLevel">error</param>  
+        
+        </interceptor-ref>         
+     </action>     
+
+     <action name="loadCustomerByArea" class="customerAction" method="loadListByAreaId">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>          
+     </action> 
+
+      <action name="loadDisabledCustomer" class="customerAction" method="loadDisabledList">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>
+     </action>
+
+     <action name="loadCustomer" class="customerAction" method="loadEntity">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result> 
+        <interceptor-ref name="defaultStack">  
+
+          <param name="exception.logEnabled">true</param>  
+        
+          <param name="exception.logLevel">error</param>  
+        
+        </interceptor-ref>                
+     </action>     
+ 
+      <action name="delCustomer" class="customerAction" method="delete">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>        
+     </action>      
+
+     <action name="loadCustomerForCombo" class="customerAction" method="loadListForCombo">
+        <result name="success" type="json">
+            <param name="target">comboList</param>
+        </result>
+     </action>
+
+     <action name="loadCustByMAForCombo" class="customerAction" method="loadComboListByAreaId">
+        <result name="success" type="json">
+            <param name="target">comboList</param>
+        </result>
+     </action>
+ 
+      <action name="loadCurrencyByCustId" class="customerAction" method="loadCurrency">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>        
+     </action>   
+ 
+       <action name="loadMarketAreaTree" class="marketAreaAction" method="loadAll">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>              
+      </action> 
+
+      <action name="loadMarketAreaForCombo" class="marketAreaAction" method="loadListForCombo">
+        <result name="success" type="json">
+            <param name="target">comboList</param>
+        </result>        
+      </action> 
+
+      <action name="loadMarketArea" class="marketAreaAction" method="loadEntity">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>        
+      </action>
+
+      <action name="saveMarketArea" class="marketAreaAction" method="save">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>        
+      </action> 
+
+      <action name="delMarketArea" class="marketAreaAction" method="delete">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>        
+      </action> 
+ 
+     <action name="loadAllCustPriority" class="custPriorityAction" method="loadAll">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>
+     </action>
+
+     <action name="loadCustPriorityForCombo" class="custPriorityAction" method="loadListForCombo">
+        <result name="success" type="json">
+            <param name="target">comboList</param>
+        </result>
+     </action>
+ 
+       <action name="loadCustPriority" class="custPriorityAction" method="loadEntity">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>        
+      </action>
+
+      <action name="saveCustPriority" class="custPriorityAction" method="save">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>        
+      </action> 
+
+      <action name="delCustPriority" class="custPriorityAction" method="delete">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>        
+      </action>  
+      
+     <action name="loadAllCurrency" class="currencyAction" method="loadAll">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>
+     </action>
+
+     <action name="loadCurrencyForCombo" class="currencyAction" method="loadListForCombo">
+        <result name="success" type="json">
+            <param name="target">comboList</param>
+        </result>
+     </action>
+ 
+       <action name="loadCurrency" class="currencyAction" method="loadEntity">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>        
+      </action>
+
+      <action name="saveCurrency" class="currencyAction" method="save">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>        
+      </action> 
+
+      <action name="delCurrency" class="currencyAction" method="delete">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>        
+      </action>      
+
+     <action name="loadEmpComboListByGroupId" class="workGroupAction" method="loadEmpComboListById">
+        <result name="success" type="json">
+            <param name="target">comboList</param>
+        </result>
+     </action>
+
+     <action name="saveProdSample" class="prodSampleAction" method="save">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+        <interceptor-ref name="fileUploadStack">
+                <param name="allowedTypes">image/bmp,image/jpg,image/jpeg,image/png,image/gif,image/pjepg</param>
+                <param name="maximumSize">1024*2048</param>
+         </interceptor-ref>        
+         
+         <interceptor-ref name="defaultStack">  
+
+          <param name="exception.logEnabled">true</param>  
+        
+          <param name="exception.logLevel">error</param>  
+        
+        </interceptor-ref>     
+    </action> 
+
+       <action name="loadProdSample" class="prodSampleAction" method="loadEntity">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>              
+      </action>
+      
+      <action name="delProdSample" class="prodSampleAction" method="delete">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>        
+      </action> 
+      
+      <action name="loadAllProdSample" class="prodSampleAction" method="loadAll">
+         <result name="success" type="json">
+            <param name="target">list</param>
+         </result>
+      </action>
+
+     <action name="loadDisabledProdSample" class="prodSampleAction" method="loadDisabledList">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>           
+     </action> 
+
+     <action name="loadProdSampleByCtg" class="prodSampleAction" method="loadByCtg">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>    
+     </action>   
+
+     <action name="lendProdSample" class="prodSampleAction" method="lend">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>   
+    </action>      
+                    
+    </package>     
+    
+</struts>

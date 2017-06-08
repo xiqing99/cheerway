@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+ 
+<struts>
+
+    <package name="security" namespace="/" extends="securityTest-default">
+
+    <action name="loginSuccess" class="org.qixi.security.action.LoginAction" method="loginSuccess">
+    	<result name="success" type="json">
+    		<param name="target">loginResult</param>
+    	</result>
+    </action>        
+    
+    <action name="loginFailed" class="org.qixi.security.action.LoginAction" method="loginFailed">
+    	<result name="success" type="json">
+    		<param name="target">loginResult</param>
+    	</result>
+    </action>
+ 
+    <action name="loadUserInfo" class="org.qixi.security.action.LoginAction" method="loadUserInfo">
+        <result name="success" type="json">
+            <param name="target">loginResult</param>
+        </result>
+    </action>   
+    
+    <action name="sessonTimeout" class="org.qixi.security.action.LoginAction" method="sessionTimetout" >
+        <result name="ajaxResult" type="json">
+            <param name="target">loginResult</param>
+        </result>
+        
+        <result name ="rediectResult" type="redirect">
+            <param name="location">/login.jsp</param>
+        </result>
+    </action>    
+    
+    <action name="loadMenu" class="org.qixi.security.action.LoginAction" method="loadMenu">
+    	<result name="success" type="json">
+    		<param name="target">menuList</param>
+    	</result>   	
+        <result name ="error" type="redirect">
+            <param name="location">/login.jsp</param>
+        </result>        
+        
+        <interceptor-ref name="defaultStack">  
+          <param name="exception.logEnabled">true</param>          
+          <param name="exception.logLevel">error</param>          
+        </interceptor-ref>        
+    </action>    
+
+     <action name="loadVchListMenu" class="org.qixi.security.action.LoginAction" method="loadMyVchListMenu">
+        <result name="success" type="json">
+            <param name="target">menuList</param>
+        </result>
+     </action> 
+
+    <action name="loadCurUser" class="userAction" method="loadCurrentUser">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+    </action>
+    
+    <action name="updateCurUser" class="userAction" method="updateCurrentUser">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+        <interceptor-ref name="defaultStack">  
+
+          <param name="exception.logEnabled">true</param>  
+        
+          <param name="exception.logLevel">error</param>  
+        
+        </interceptor-ref>            
+    </action>
+
+    <action name="loadUser" class="userAction" method="loadEntity">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>          
+    </action>
+    
+    <action name="loadUserByEmpId" class="userAction" method="loadByEmpGenInfoId">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>         
+    </action>    
+    
+    <action name="loadAllUsers" class="userAction" method="loadListForCombo">
+        <result name="success" type="json">
+            <param name="target">comboList</param>
+        </result>
+    </action>
+    
+    <action name="saveUser" class="userAction" method="save">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+    </action>        
+
+    <action name="delUser" class="userAction" method="delete">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+    </action> 
+
+    <action name="loadRole" class="roleAction" method="loadEntity">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+        <interceptor-ref name="defaultStack">  
+
+          <param name="exception.logEnabled">true</param>  
+        
+          <param name="exception.logLevel">error</param>  
+        
+        </interceptor-ref>             
+    </action>
+    
+    <action name="loadAllRoles" class="roleAction" method="loadAll">
+        <result name="success" type="json">
+            <param name="target">list</param>
+        </result>
+    </action>
+    
+    <action name="saveRole" class="roleAction" method="save">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+    </action>        
+
+    <action name="delRole" class="roleAction" method="delete">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+    </action> 
+
+    <action name="loadAllAuthority" class="authorityAction" method="loadListForCombo">
+        <result name="success" type="json">
+            <param name="target">comboList</param>
+        </result>
+    </action>  
+    
+    <action name="loadGroup" class="workGroupAction" method="loadEntity">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+        <interceptor-ref name="defaultStack">  
+
+          <param name="exception.logEnabled">true</param>  
+        
+          <param name="exception.logLevel">error</param>  
+        
+        </interceptor-ref>             
+    </action>
+    
+    <action name="loadAllGroups" class="workGroupAction" method="loadListForCombo">
+        <result name="success" type="json">
+            <param name="target">comboList</param>
+        </result>
+    </action>
+    
+    <action name="saveGroup" class="workGroupAction" method="save">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+    </action>        
+
+    <action name="delGroup" class="workGroupAction" method="delete">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+    </action>       
+     
+   <action name="loadVoucherSeqNumSeeds" class="sysSettingAction" method="loadVoucherSeqNumSeeds">
+    <result name="success" type="json">
+        <param name="target">list</param>
+    </result>
+   </action>              
+    
+    <action name="resetAllVoucherSeqNumSeeds" class="sysSettingAction" method="resetAllVoucherSeqNumSeeds">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+     </action>      
+
+    <action name="updateVchSeqSeed" class="sysSettingAction" method="updateSeqValue">
+        <result name="success" type="json">
+            <param name="target">resultMap</param>
+        </result>
+     </action>        
+    </package>
+</struts>

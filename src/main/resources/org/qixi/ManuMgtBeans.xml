@@ -1,0 +1,36 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">    
+    
+
+    <bean id="mtItemDao" class="org.qixi.manuMgt.dao.hibernate.MtItemDaoImpl" >     
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean> 
+    
+    <bean id="mtItemService" class="org.qixi.manuMgt.service.impl.MtItemServiceImpl" >     
+    </bean>     
+
+    <bean id="prodMtItemDao" class="org.qixi.manuMgt.dao.hibernate.ProdMtItemDaoImpl" >     
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean> 
+    
+    <bean id="prodMtItemService" class="org.qixi.manuMgt.service.impl.ProdMtItemServiceImpl" >     
+    </bean> 
+         
+     <bean id="prodMtItemAction" class="org.qixi.manuMgt.action.ProdMtItemAction" scope="prototype">
+        <property name="service" ref="prodMtItemService" ></property>
+     </bean>     
+     
+    <bean id="slbProdMtItemService" class="org.qixi.manuMgt.service.impl.SlbProdMtItemServiceImpl" >     
+    </bean> 
+         
+     <bean id="slbProdMtItemAction" class="org.qixi.manuMgt.action.SlbProdMtItemAction" scope="prototype">
+     </bean>        
+</beans>

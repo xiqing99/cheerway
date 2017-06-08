@@ -1,0 +1,160 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">    
+    
+    <bean id="positionDao" class="org.qixi.basicElem.dao.hibernate.PositionDaoImpl" >     
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+ 
+     <bean id="positionService" class="org.qixi.basicElem.service.PositionService">
+        <property name="dao" ref="positionDao" ></property>     
+     </bean>  
+
+    <bean id="positionAction" class="org.qixi.basicElem.action.PositionAction" scope="prototype">
+        <property name="service" ref="positionService" ></property>
+    </bean>
+    
+    <bean id="empGenInfoDao" class="org.qixi.basicElem.dao.hibernate.EmpGenInfoDaoImpl" >     
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>   
+
+    <bean id="empGenInfoService" class="org.qixi.basicElem.service.impl.EmpGenInfoServiceImpl"></bean>
+    
+    <bean id="empGenInfoAction" class="org.qixi.basicElem.action.EmpGenInfoAction" scope="prototype">
+        <property name="service" ref="empGenInfoService" ></property>
+    </bean>    
+ 
+     <bean id="deptDao" class="org.qixi.basicElem.dao.hibernate.DepartmentDaoImpl" >     
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>   
+        
+    <bean id="deptService" class="org.qixi.basicElem.service.impl.DeptServiceImpl">
+        <property name="dao" ref="deptDao"></property>
+    </bean>
+
+    <bean id="deptAction" class="org.qixi.basicElem.action.DeptAction"  scope="prototype">
+        <property name="service" ref="deptService"></property>
+    </bean>
+    
+     <bean id="prodCtgDao" class="org.qixi.basicElem.dao.hibernate.ProdCtgDaoImpl" >     
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>   
+ 
+    <bean id="prodCtgService" class="org.qixi.basicElem.service.impl.ProdCtgServiceImpl">
+        <property name="dao" ref="prodCtgDao"></property>
+    </bean>
+    
+     <bean id="prodCtgAction" class="org.qixi.basicElem.action.ProdCategoryAction"  scope="prototype">
+        <property name="service" ref="prodCtgService"></property>
+    </bean>
+ 
+     <bean id="prodTypeDao" class="org.qixi.basicElem.dao.hibernate.ProductTypeDaoImpl" >     
+        <property name="sessionFactory" ref="sessionFactory"></property>
+     </bean>   
+
+     <bean id="prodTypeService" class="org.qixi.basicElem.service.ProductTypeService">
+        <property name="dao" ref="prodTypeDao"></property>
+     </bean>
+
+     <bean id="prodTypeAction" class="org.qixi.basicElem.action.ProdTypeAction"  scope="prototype">
+        <property name="service" ref="prodTypeService"></property>
+     </bean>
+ 
+     <bean id="prodUnitDao" class="org.qixi.basicElem.dao.hibernate.ProductUnitDaoImpl" >     
+        <property name="sessionFactory" ref="sessionFactory"></property>
+     </bean>    
+
+     <bean id="prodUnitService" class="org.qixi.basicElem.service.ProductUnitService" >     
+        <property name="dao" ref="prodUnitDao"></property>
+     </bean>    
+
+     <bean id="prodUnitAction" class="org.qixi.basicElem.action.ProdUnitAction"  scope="prototype">     
+        <property name="service" ref="prodUnitService"></property>
+     </bean>   
+      
+     <bean id="productDao" class="org.qixi.basicElem.dao.hibernate.ProductDaoImpl" >     
+        <property name="sessionFactory" ref="sessionFactory"></property>
+     </bean>   
+     
+     <bean id="productService" class="org.qixi.basicElem.service.impl.ProductServiceImpl"></bean>
+     
+     <bean id="productAction" class="org.qixi.basicElem.action.ProductAction"  scope="prototype">
+        <property name="service" ref="productService"></property>
+     </bean>
+ 
+      <bean id="storeDao" class="org.qixi.basicElem.dao.hibernate.StoreDaoImpl" >     
+        <property name="sessionFactory" ref="sessionFactory"></property>
+     </bean>   
+ 
+     <bean id="storeService" class="org.qixi.basicElem.service.StoreService">
+        <property name="dao" ref="storeDao"></property>
+     </bean>
+     
+     <bean id="storeAction" class="org.qixi.basicElem.action.StoreAction"  scope="prototype">
+        <property name="service" ref="storeService"></property>
+     </bean>    
+     
+      <bean id="marketAreaDao" class="org.qixi.basicElem.dao.hibernate.MarketAreaDaoImpl" >     
+        <property name="sessionFactory" ref="sessionFactory"></property>
+     </bean>   
+ 
+     <bean id="marketAreaService" class="org.qixi.basicElem.service.impl.MarketAreaServiceImpl">     
+        <property name="dao" ref="marketAreaDao"></property>
+     </bean>  
+
+     <bean id="marketAreaAction" class="org.qixi.basicElem.action.MarketAreaAction"  scope="prototype">
+        <property name="service" ref="marketAreaService"></property>
+     </bean>  
+
+      <bean id="customerDao" class="org.qixi.basicElem.dao.hibernate.CustomerDaoImpl" >     
+        <property name="sessionFactory" ref="sessionFactory"></property>
+     </bean>   
+ 
+     <bean id="customerService" class="org.qixi.basicElem.service.impl.CustomerServiceImpl">
+     </bean>
+     
+     <bean id="customerAction" class="org.qixi.basicElem.action.CustomerAction"  scope="prototype">
+        <property name="service" ref="customerService"></property>
+     </bean> 
+
+     <bean id="custPriorityDao" class="org.qixi.basicElem.dao.hibernate.CustPriorityDaoImpl" >     
+        <property name="sessionFactory" ref="sessionFactory"></property>
+     </bean>    
+
+     <bean id="custPriorityService" class="org.qixi.basicElem.service.CustPriorityService" >     
+        <property name="dao" ref="custPriorityDao"></property>
+     </bean>    
+
+     <bean id="custPriorityAction" class="org.qixi.basicElem.action.CustPriorityAction"  scope="prototype">     
+        <property name="service" ref="custPriorityService"></property>
+     </bean>   
+
+     <bean id="currencyDao" class="org.qixi.basicElem.dao.hibernate.CurrencyDaoImpl" >     
+        <property name="sessionFactory" ref="sessionFactory"></property>
+     </bean>   
+
+     <bean id="currencyService" class="org.qixi.basicElem.service.impl.CurrencyServiceImpl">
+     </bean>
+
+     <bean id="currencyAction" class="org.qixi.basicElem.action.CurrencyAction"  scope="prototype">
+        <property name="service" ref="currencyService"></property>
+     </bean>
+     
+     <bean id="prodSampleDao" class="org.qixi.basicElem.dao.hibernate.ProdSampleDaoImpl" >     
+        <property name="sessionFactory" ref="sessionFactory"></property>
+     </bean>   
+
+     <bean id="prodSampleService" class="org.qixi.basicElem.service.impl.ProdSampleServiceImpl">
+     </bean>
+          
+     <bean id="prodSampleAction" class="org.qixi.basicElem.action.ProdSampleAction" scope="prototype">
+        <property name="service" ref="prodSampleService"></property>
+    </bean>    
+</beans>

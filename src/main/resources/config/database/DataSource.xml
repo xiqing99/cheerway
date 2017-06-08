@@ -1,0 +1,121 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+<!--
+    <bean 
+	   class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	   <property name="location">
+	     <value>WEB-INF/classes/config/database/database.properties</value>
+	   </property>
+	</bean>
+ 
+  <bean id="dataSource" 
+         class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<property name="driverClassName" value="${jdbc.driverClassName}" />
+	<property name="url" value="${jdbc.url}" />
+	<property name="username" value="${jdbc.username}" />
+	<property name="password" value="${jdbc.password}" />
+  </bean>
+ -->
+     <bean id="dataSource" 
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="org.postgresql.Driver" />
+        <property name="url" value="jdbc:postgresql://127.0.0.1:5432/cheerwayErp" />
+        <property name="username" value="postgres" />
+        <property name="password" value="postgres" />
+     </bean>
+ 
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean" >
+        <property name="dataSource" ref="dataSource"></property>
+
+        <property name="packagesToScan">
+            <list>
+                <value>org.qixi.basicElem.beans</value>
+                <value>org.qixi.security.beans</value>
+                <value>org.qixi.salesMgt.beans</value>
+                <value>org.qixi.stockMgt.beans</value>
+                <value>org.qixi.stockingMgt.beans</value>
+                <value>org.qixi.accountMgt.beans</value>
+                <value>org.qixi.manuMgt.beans</value>
+            </list>
+        </property>      
+    </bean>
+        
+      <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory">
+          <ref local="sessionFactory"/>
+        </property>
+      </bean>
+          
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="get*" read-only="true" propagation="REQUIRED"/>
+            <tx:method name="*" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>        
+      
+    <aop:config>
+        <aop:pointcut id="entryPointMethod" expression="execution(* org.qixi.security.dao.hibernate.*.*(..) )"/>    
+        <aop:advisor  advice-ref="txAdvice" pointcut-ref="entryPointMethod"/> 
+    </aop:config>       
+  
+    <aop:config>
+        <aop:pointcut id="entryPointMethod2" expression="execution(* org.qixi.stockingMgt.service.*.*(..) )"/>    
+        <aop:advisor  advice-ref="txAdvice" pointcut-ref="entryPointMethod2"/> 
+    </aop:config>      
+  
+    <aop:config>
+        <aop:pointcut id="entryPointMethod3" expression="execution(* org.qixi.basicElem.service.*.*(..) )"/>    
+        <aop:advisor  advice-ref="txAdvice" pointcut-ref="entryPointMethod3"/> 
+    </aop:config>      
+ 
+     <aop:config>
+        <aop:pointcut id="entryPointMethod4" expression="execution(* org.qixi.basicElem.dao.*.*(..) )"/>    
+        <aop:advisor  advice-ref="txAdvice" pointcut-ref="entryPointMethod4"/> 
+    </aop:config>  
+
+    <aop:config>
+        <aop:pointcut id="entryPointMethod5" expression="execution(* org.qixi.common.service.*.*(..) )"/>    
+        <aop:advisor  advice-ref="txAdvice" pointcut-ref="entryPointMethod5"/> 
+    </aop:config>   
+ 
+     <aop:config>
+        <aop:pointcut id="entryPointMethod6" expression="execution(* org.qixi.salesMgt.service.*.*(..) )"/>    
+        <aop:advisor  advice-ref="txAdvice" pointcut-ref="entryPointMethod6"/> 
+    </aop:config>  
+ 
+      <aop:config>
+        <aop:pointcut id="entryPointMethod7" expression="execution(* org.qixi.stockMgt.service.*.*(..) )"/>    
+        <aop:advisor  advice-ref="txAdvice" pointcut-ref="entryPointMethod7"/> 
+    </aop:config>
+    
+      <aop:config>
+        <aop:pointcut id="entryPointMethod8" expression="execution(* org.qixi.accountMgt.service.*.*(..) )"/>    
+        <aop:advisor  advice-ref="txAdvice" pointcut-ref="entryPointMethod8"/> 
+    </aop:config>   
+    
+      <aop:config>
+        <aop:pointcut id="entryPointMethod9" expression="execution(* org.qixi.security.service.*.*(..) )"/>    
+        <aop:advisor  advice-ref="txAdvice" pointcut-ref="entryPointMethod9"/> 
+    </aop:config>  
+    
+      <aop:config>
+        <aop:pointcut id="entryPointMethod10" expression="execution(* org.qixi.manuMgt.service.*.*(..) )"/>    
+        <aop:advisor  advice-ref="txAdvice" pointcut-ref="entryPointMethod10"/> 
+    </aop:config>     
+        
+ <!-- 
+  <bean id="txManager" 
+        class="org.springframework.jdbc.datasource.DataSourceTransactionManager"> 
+    <property name="dataSource" ref="dataSource" /> 
+   </bean>
+   
+    <tx:annotation-driven transaction-manager="txManager" />  
+ -->
+</beans>

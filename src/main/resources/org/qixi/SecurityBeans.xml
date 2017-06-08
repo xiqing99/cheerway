@@ -1,0 +1,83 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+    <bean id="userDao" class="org.qixi.security.dao.hibernate.UserDaoImpl" >     
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>   
+    
+    <bean id="authorityDao" class="org.qixi.security.dao.hibernate.AuthorityDaoImpl" >     
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>   
+    
+    <bean id="roleDao" class="org.qixi.security.dao.hibernate.RoleDaoImpl" >     
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>  
+
+    <bean id="reportMenuDao" class="org.qixi.security.dao.hibernate.ReportMenuDaoImpl" >     
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>  
+
+    <bean id="voucherMenuDao" class="org.qixi.security.dao.hibernate.VoucherMenuDaoImpl" >     
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>  
+
+    <bean id="vchSeqSeedDao" class="org.qixi.security.dao.hibernate.VchSeqSeedDaoImpl" >     
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>  
+	
+	<bean id="myUserDetailsService" class="org.qixi.security.service.MyUserDetailsService">
+	</bean>	
+	
+	<bean id="myFilterInvocationSecurityMetadataSource" init-method="initRequestMapFromDB"
+	   class="org.qixi.security.service.MyFilterInvocationSecurityMetadataSource">
+	</bean>
+	
+	<bean id="loginService" class="org.qixi.security.service.LoginService">		
+	</bean>
+    
+    <bean id="userService" class="org.qixi.security.service.impl.UserServiceImpl" >     
+    </bean>     
+
+    <bean id="roleService" class="org.qixi.security.service.impl.RoleServiceImpl" >     
+    </bean>     
+    
+    <bean id="authorityService" class="org.qixi.security.service.impl.AuthorityServiceImpl" >     
+    </bean>      
+    
+    <bean id="userAction" class="org.qixi.security.action.UserAction" scope="prototype">
+         <property name="service" ref="userService"></property>    
+    </bean>            
+
+    <bean id="roleAction" class="org.qixi.security.action.RoleAction" scope="prototype">
+         <property name="service" ref="roleService"></property>    
+    </bean>  
+ 
+     <bean id="authorityAction" class="org.qixi.security.action.AuthorityAction" scope="prototype">
+         <property name="service" ref="authorityService"></property>    
+    </bean>
+    
+    <bean id="workGroupDao" class="org.qixi.security.dao.hibernate.WorkGroupDaoImpl" >     
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+ 
+     <bean id="workGroupService" class="org.qixi.security.service.impl.WorkGroupServiceImpl">  
+     </bean>  
+
+    <bean id="workGroupAction" class="org.qixi.security.action.WorkGroupAction" scope="prototype">
+        <property name="service" ref="workGroupService" ></property>
+    </bean>      
+    
+    <bean id="sysSettingService" class="org.qixi.security.service.SysSettingService" >     
+    </bean> 
+    
+    <bean id="sysSettingAction" class="org.qixi.security.action.SysSettingAction" scope="prototype">   
+    </bean>        
+</beans>

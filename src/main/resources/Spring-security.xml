@@ -1,0 +1,51 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+    xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/security
+    http://www.springframework.org/schema/security/spring-security-3.2.xsd">    
+  
+	<beans:bean id="loggerListener" class="org.springframework.security.authentication.event.LoggerListener" />
+	
+	<http pattern="/login.jsp" security='none' ></http>
+	
+    <http auto-config='true' access-denied-page="/accessDenied.jsp">        
+        
+        <intercept-url pattern="/main.html" access="ROLE_Employee"/>
+        
+        <form-login login-page="/login.jsp" authentication-failure-url="/loginFailed.action" default-target-url="/loginSuccess.action" />
+        <logout logout-success-url="/login.jsp"/>
+
+       <session-management invalid-session-url="/sessonTimeout.action">  
+            <concurrency-control max-sessions="1" error-if-maximum-exceeded="false"/>  
+       </session-management>  
+
+        <custom-filter ref="myFilter" before="FILTER_SECURITY_INTERCEPTOR" />  
+        
+    </http>
+
+    <beans:bean id="myFilter" class="org.springframework.security.web.access.intercept.FilterSecurityInterceptor">  
+        <beans:property name="authenticationManager" ref="myAuthenticationManager" />  
+        <beans:property name="accessDecisionManager" ref="accessDecisionManager" />  
+        <beans:property name="securityMetadataSource" ref="myFilterInvocationSecurityMetadataSource" />  
+    </beans:bean>  
+
+    <authentication-manager alias="myAuthenticationManager">  
+        <authentication-provider user-service-ref="myUserDetailsService">  
+            <!--  
+            <s:password-encoder hash="sha" />  
+             -->  
+        </authentication-provider>  
+    </authentication-manager>  
+	
+	<beans:bean id="accessDecisionManager" class="org.springframework.security.access.vote.AffirmativeBased">
+        <beans:property name="allowIfAllAbstainDecisions" value="false"/>
+        <beans:property name="decisionVoters">
+            <beans:list>
+                <beans:bean class="org.springframework.security.access.vote.RoleVoter"/>
+                <beans:bean class="org.springframework.security.access.vote.AuthenticatedVoter"/>
+            </beans:list>
+        </beans:property>
+    </beans:bean>
+    
+</beans:beans>
